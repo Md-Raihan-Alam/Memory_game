@@ -42,6 +42,46 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+.game_menu{
+  background-color:greenyellow;
+  width: 60%;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.game_menu button{
+  margin:20px 0px;
+  padding:20px;
+  border-radius:20px;
+  cursor:pointer;
+}
+.game_menu_settings{
+  background-color:greenyellow;
+  width: 60%;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+}
+.game_menu_settings input{
+  margin:20px 0px;
+}
+.submit_btn{
+  padding:20px;
+  border-radius:20px;
+  cursor:pointer;
+}
 .remove {
   display: none;
 }
