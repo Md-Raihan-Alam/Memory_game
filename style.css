@@ -10,7 +10,7 @@ body {
 }
 .modal_information {
   width: 60%;
-  height: 400px;
+  height: fit-content;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -25,12 +25,16 @@ body {
 .header {
   text-transform: uppercase;
   font-size: 30px;
+  text-align: center;
 }
 .desc {
   width: 70%;
   height: auto;
   text-align: center;
 }
+/* @media screen and (max-width:500px){
+  modal_informati
+} */
 .Close_btn {
   width: 100px;
   height: 50px;
@@ -41,6 +45,20 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+@media screen and (max-width:400px){
+  .header{
+    font-size:20px;
+  }
+  .desc{
+    width:90%;
+    font-size:15px;
+  }
+  .Close_btn{
+    width: 100px;
+    height: 40px;
+    font-size:17px;
+  }
 }
 .game_menu{
   background-color:greenyellow;
@@ -54,6 +72,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.game_menu h1{
+  text-align: center;
 }
 .game_menu button{
   margin:20px 0px;
@@ -82,6 +103,122 @@ body {
   border-radius:20px;
   cursor:pointer;
 }
+.game_hajimare{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width:fit-content;
+  height:400px;
+  transform: translate(-50%, -50%);
+}
+.game_sets{
+  position: relative;
+  width:inherit;
+  height:inherit;
+  display: grid;
+  gap:10px 10px;
+  grid-template-columns: repeat(4,100px);
+  grid-auto-flow:row;
+}
+.transform_pic_3d{
+  position: relative;
+  transform-style:preserve-3d;
+  transition:transform 1s;
+}
+.grid_items{
+  width:100px;
+  height:100px;
+  cursor:pointer;
+}
+.card_front,
+.card_back{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card_back {
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+@media screen and (max-width:450px){
+  .game_sets{
+    grid-template-columns: repeat(3,100px);
+  }
+}
+@media screen and (max-width:350px){
+  .game_sets{
+    grid-template-columns: repeat(3,50px);
+  }
+  .grid_items{
+    width:50px;
+    height:50px;
+  }
+}
+.game_result{
+  background-color:greenyellow;
+  width: 60%;
+  height: fit-content;
+  padding:20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.player_result .totalScore{
+  font-size:21px;
+}
+.player_result .totalScore,.totalTime{
+  padding:20px 0px;
+}
+.resultForm{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+.user_name{
+  width:180px;
+  height:fit-content;
+}
+.user_name,.submitResult{
+margin:10px 0px;
+}
+.submitResult{
+  border:none; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100px;
+  height:50px;
+  background-color:green;
+  cursor: pointer;
+}
+.refresh_btn{
+  border:none; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100px;
+  height:50px;
+  background-color:red;
+  cursor: pointer;
+}
 .remove {
   display: none;
+}
+.rotate{
+  transform: rotateY(180deg);
+}
+.pointer_events_none{
+  pointer-events: none;
 }
