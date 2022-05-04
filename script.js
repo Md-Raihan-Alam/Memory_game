@@ -1,3 +1,4 @@
+//Assets
 const allPictures=[
     {
         id:1,
@@ -60,6 +61,8 @@ const allPictures=[
         name:"Pizza",
     }
 ];
+
+//Variables->DOM Selection
 const modal=document.querySelector('.modal_information');
 const btn=document.querySelector('.Close_btn');
 const gameMenu=document.querySelector('.game_menu');
@@ -69,6 +72,8 @@ const gameSettingsSubmit=document.querySelector('.submit');
 const gameStart=document.querySelector('.gameStart');
 const gameMode=document.querySelector('.game_hajimare');
 const gameResult=document.querySelector('.game_result');
+
+//Variables
 let gameLevel;
 let rememberSecond,matchingPoints,wrongMatchingPoints,timeMinus;
 let finalScore=0;
@@ -78,7 +83,11 @@ let pictureParentId=[];
 let startTime;
 let finishTime;
 let seconds;
+
+//default value
 document.querySelector('.normal').checked=true;
+
+//Events
 gameSettings.addEventListener('click',()=>{
     gameSetModal.classList.remove('remove');
     gameMenu.classList.add('remove');
@@ -114,6 +123,7 @@ function shuffleArray(array){
         array[randomArray]=temp;
     }
 }
+//Show points and restart
 function gameFinishingAndSave(){
     finishTime=performance.now();
     let TimeDifference=finishTime-startTime;
@@ -129,6 +139,7 @@ function gameFinishingAndSave(){
     `;
     document.querySelector('.refresh_btn').addEventListener('click',()=>location.reload());
 }
+//update points
 function calculateUserPoints(match){
     if(match===true){
         finalScore+=matchingPoints;
@@ -136,9 +147,12 @@ function calculateUserPoints(match){
     }else{
         finalScore+=wrongMatchingPoints;
     }
+    //Finishing Game
     if(totalCards===0) gameFinishingAndSave();
     
 }
+
+//level select
 function gameRules(levelDesc="normal"){
     if(levelDesc==="easy"){
         rememberSecond=1;
@@ -170,20 +184,28 @@ function gameRules(levelDesc="normal"){
         gameExecution(levelDesc);
     });
 }
+
+//Checking the matching
 function declareCurrentResult(){
     document.querySelectorAll('.grid_items').forEach((e)=>e.parentElement.classList.remove('pointer_events_none'));
     if(pictureChosen[0]===pictureChosen[1]){
+        //calculate points
         calculateUserPoints(true);
         for(let i of pictureParentId) document.querySelector(`[data-num="${i}"]`).children[1].classList.add("pointer_events_none");
     }else{
+        //calculate points
         calculateUserPoints(false);
         for(let i of pictureParentId) document.querySelector(`[data-num="${i}"]`).classList.add("rotate");
     }
     pictureChosen=[];
     pictureParentId=[];
 }
+
+//Control The Game
 function selectTimes(){
+    //Time Start
     startTime=performance.now();
+    //Click Events
   document.querySelectorAll('.grid_items').forEach((e)=>{
         e.addEventListener('click',function(current){
             if(pictureParentId.includes(current.target.parentElement.dataset.num)===false){
@@ -195,12 +217,15 @@ function selectTimes(){
                 if(pictureChosen.length===2) 
                 {
                     document.querySelectorAll('.grid_items').forEach((e)=>e.parentElement.classList.add('pointer_events_none'));
+                    //Match Check
                     setTimeout(declareCurrentResult,1000);
                 }
             }
         });
   });
 }
+
+//Game Level Select and Prepare the Game
 function gameExecution(setLevel="hard"){
     let gameTime;
     if(setLevel==="easy"){

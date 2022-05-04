@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital@1&family=Overpass:wght@200&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-family: 'Overpass', sans-serif;
 }
 body {
   position: relative;
